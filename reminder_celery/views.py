@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.utils import timezone
 
 from reminder_celery.forms import ReminderForm
 from reminder_celery.tasks import reminder_schedule
@@ -16,7 +17,7 @@ def index(request):
 
             return redirect('reminder:reminder-set')
     else:
-        form = ReminderForm()
+        form = ReminderForm(initial={'schedule': timezone.now()})
     return render(
         request,
         'reminder_celery/index.html',
