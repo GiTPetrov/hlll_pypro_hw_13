@@ -6,7 +6,6 @@ from reminder_celery.tasks import reminder_schedule
 
 
 def index(request):
-    hypo = None
     if 'reminde_me' in request.GET:
         form = ReminderForm(request.GET)
         if form.is_valid():
@@ -23,7 +22,6 @@ def index(request):
         'reminder_celery/index.html',
         {
             'get_rmndr_form': form,
-            'hypothesis': hypo,
         }
     )
 
