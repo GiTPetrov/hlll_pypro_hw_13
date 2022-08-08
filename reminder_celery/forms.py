@@ -6,7 +6,7 @@ from django.utils import timezone
 class ReminderForm(forms.Form):
     email = forms.EmailField(label='Reminder email')
     reminder_text = forms.CharField(label='Reminder text')
-    schedule = forms.DateTimeField(label='Reminder date and time', initial=timezone.now())
+    schedule = forms.DateTimeField(label='Reminder date and time')
 
     def clean_schedule(self):
         now = timezone.now()
