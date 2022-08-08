@@ -129,6 +129,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Email Configuration Options
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Celery Configuration Options
 CELERY_TIMEZONE = "UTC"
 CELERY_TASK_TRACK_STARTED = True
