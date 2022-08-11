@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quites list</title>
+</head>
+<body>
+    <h1>Quites list</h1>
+    <a href="{% url 'quotes:index' %}">Quotes Home</a>
+    <ul>
+    {% for quote in quotes %}
+        <li>
+            <p>"{{ quote }}" - <a href="{% url 'quotes:author-info' pk=quote.quote_author.pk %}">{{ quote.quote_author }}</a></p>
+        </li>
+    {% endfor %}
+    </ul>
+
+</body>
+</html>

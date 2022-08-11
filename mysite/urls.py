@@ -19,5 +19,7 @@ from django.urls import include, path
 
 urlpatterns = [
     path('', include('reminder_celery.urls')),
+    path('quotes/', include('quotes.urls')),
     path('admin/', admin.site.urls),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
