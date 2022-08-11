@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -40,9 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'django_extensions',
+    'debug_toolbar',
     'django_celery_results',
 
     'reminder_celery',
+    'quotes',
 
 ]
 
@@ -54,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -129,6 +134,11 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Debug-toolbar Configuration Options
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
+
 # Email Configuration Options
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -138,3 +148,11 @@ CELERY_TASK_TRACK_STARTED = True
 CELERY_TASK_TIME_LIMIT = 30 * 60
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_BEAT_SCHEDULE = {
+    'quotes_parse_task': {
+        'task': 'quotes.tasks.parce_quotes',
+        'schedule': crontab(minute=0, hour='1-22/2'),
+        # 'schedule': 15,
+        'args': ()
+    },
+}

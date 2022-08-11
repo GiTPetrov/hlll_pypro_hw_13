@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ author_info }}</title>
+</head>
+<body>
+    <p><a href="{% url 'quotes:authors-list' %}">Authors list</a></p>
+    <p><a href="{% url 'quotes:quotes-list' %}">Quotes list</a></p>
+    <h1>{{ author_info }}</h1>
+    <p>{{ author_info.author_birthdate }} --- {{ author_info.author_birthplace }}</p>
+    <p>{{ author_info.author_description }}</p>
+    <p><a href="{% url 'quotes:authors-quotes' pk=author_info.pk %}">{{ author_info }}'s quotes</a></p>
+
+
+</body>
+</html>
