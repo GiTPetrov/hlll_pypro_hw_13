@@ -151,8 +151,7 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_BEAT_SCHEDULE = {
     'quotes_parse_task': {
         'task': 'quotes.tasks.parce_quotes',
-        'schedule': crontab(minute=0, hour='1-22/2'),
-        # 'schedule': 15,
-        'args': ()
+        'schedule': crontab(minute=0, hour='1-23/2'),
+        'args': (),
     },
 }
