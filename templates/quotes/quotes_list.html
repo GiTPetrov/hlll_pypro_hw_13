@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Quites list</title>
-</head>
-<body>
-    <h1>Quites list</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Quites list</h2>
     <a href="{% url 'quotes:index' %}">Quotes Home</a>
     <ul>
     {% for quote in quotes %}
@@ -15,5 +11,5 @@
     {% endfor %}
     </ul>
 
-</body>
-</html>
+{% endblock %}
+

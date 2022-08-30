@@ -1,0 +1,14 @@
+<form action="{% url 'reminder:contact-us' %}" class="js-message-create-form" method="get" >
+  {% csrf_token %}
+  <div class="modal-header">
+    <h5 class="modal-title">Create a new message</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+    <div class="modal-body">
+      {% include 'reminder_celery/includes/partial_contact_form.html' %}
+    </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-bs-dismiss="modal">Close</button>
+    <input type="submit"  data-url="{% url 'reminder:message-sent' %}" class="btn btn-default js-send-message" name="send_mail" value="Send mail">
+  </div>
+</form>

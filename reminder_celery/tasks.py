@@ -12,3 +12,14 @@ def reminder_schedule(email, text):
         [email, ],
         fail_silently=False,
     )
+
+
+@shared_task
+def contact_form(email, name, text):
+    send_mail(
+        f'{name}. Request from contact form',
+        text,
+        email,
+        ['superuser_email@ukr.net', ],
+        fail_silently=False,
+    )

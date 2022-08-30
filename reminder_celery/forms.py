@@ -15,3 +15,9 @@ class ReminderForm(forms.Form):
         if diff_days.days <= -3 or diff_days.days >= 0:
             raise ValidationError("The reminder date shouldn't be less than today and more than two days forward")
         return clnd_schedule
+
+
+class ContactForm(forms.Form):
+    email = forms.EmailField(label='Email')
+    name = forms.CharField(label='Name')
+    message_text = forms.CharField(label='Message text')

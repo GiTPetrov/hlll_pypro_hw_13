@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'debug_toolbar',
     'django_celery_results',
+    'widget_tweaks',
 
     'reminder_celery',
     'quotes',

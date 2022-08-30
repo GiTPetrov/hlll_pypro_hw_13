@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ author }}'s quotes</title>
-</head>
-<body>
-    <h1>{{ author }}</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>{{ author }}</h2>
     <a href="{% url 'quotes:author-info' pk=author.pk %}">Back</a>
     <ul>
     {% for quote in quotes %}
@@ -15,5 +12,4 @@
     {% endfor %}
     </ul>
 
-</body>
-</html>
+{% endblock %}

@@ -1,18 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Reminder form</title>
-</head>
+{% extends 'reminder_celery/base.html' %}
+
+{% block content %}
+
 <body>
-    <h1>Reminder form</h1>
+    <h2>Reminder form</h2>
     {% if hypothesis %}
-    <h2>Attention! {{ hypothesis }}</h2>
+    <h3>Attention! {{ hypothesis }}</h3>
     {% endif %}
     <form action="{% url 'reminder:index' %}" method="get">
         {% csrf_token %}
         {{ get_rmndr_form.as_p }}
         <input type="submit" name="reminde_me" value="Reminde Me!">
     </form>
-</body>
-</html>
+
+{% endblock %}
